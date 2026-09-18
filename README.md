@@ -7,7 +7,7 @@ All Ganapati Mandals in Pune, Help people to visit once in a life movement.Histo
 
 ## Live Website
 
-[https://independence-day-2026-tribute.vercel.app/](https://independence-day-2026-tribute.vercel.app/)
+[https://ganapati-2026-tau.vercel.app/](https://ganapati-2026-tau.vercel.app/)
 
 ## Highlights
 
