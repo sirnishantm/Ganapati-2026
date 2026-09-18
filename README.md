@@ -1,7 +1,7 @@
 # Ganpati-2026
 # Ganapati-Darshan-2026
 
-[![Live Website](https://img.shields.io/badge/Live_Website-Visit-success?style=for-the-badge)](https://independence-day-2026-tribute.vercel.app/)
+[![Live Website](https://img.shields.io/badge/Live_Website-Visit-success?style=for-the-badge)](https://ganapati-2026-tau.vercel.app/)
 
 All Ganapati Mandals in Pune, Help people to visit once in a life movement.Historical, Famous and Mannache pacch Ganapati Mandal.
 
