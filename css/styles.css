@@ -1,0 +1,317 @@
+/* ==========================================================================
+   Pune Ganpati Darshan 2026 - Master Design System
+   Aesthetic Tokens, Dark Temple Clay Theme, Typography & Sacred Flourishes
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Manrope:wght@400;500;600;700;800&family=Mukta:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Core sacred palette matching ganpatipune.in */
+  --raat: #14100C;          /* Deep temple night black */
+  --dhoop: #1E1813;         /* Dark sandalwood/clay card surface */
+  --dhoop-2: #27201A;       /* Raised card surface & active hover */
+  --dhoop-3: #342B23;       /* Elevated dialogs & modal backgrounds */
+  
+  --chandan: #F5EBE1;       /* Sandalwood cream text (High contrast) */
+  --muted: #B3A497;         /* Soft warm stone grey (Secondary text) */
+  --faint: #7D6F63;         /* Faint subtitle & metadata text */
+  
+  --shendur: #F05A28;       /* Sacred Sindoor/Vermillion orange */
+  --shendur-hover: #F86E3C;
+  --shendur-soft: rgba(240, 90, 40, 0.14);
+  
+  --zendu: #F7A81B;         /* Marigold saffron yellow */
+  --zendu-soft: rgba(247, 168, 27, 0.14);
+  
+  --pital: #F0B247;         /* Auspicious antique brass gold */
+  --pital-soft: rgba(240, 178, 71, 0.16);
+  
+  --gulal: #E03565;         /* Festive crimson red */
+  --asmani: #4C8ED9;        /* Riverside blue accent */
+  --hirva: #38A169;         /* Eco green / low wait accent */
+  
+  --line: #2A221B;          /* Subtle card outline */
+  --line-strong: #3D3228;   /* Prominent interactive border */
+  
+  --glow-shendur: 0 0 20px rgba(240, 90, 40, 0.38);
+  --glow-zendu: 0 0 18px rgba(247, 168, 27, 0.38);
+  --glow-pital: 0 0 16px rgba(240, 178, 71, 0.32);
+  --lift-card: 0 8px 24px rgba(0, 0, 0, 0.45);
+  
+  --radius-card: 16px;
+  --radius-field: 12px;
+  --radius-pill: 9999px;
+  
+  --nav-height: 64px;
+  --header-height: 60px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Fraunces', 'Cinzel', Georgia, serif;
+  --font-marathi: 'Mukta', 'Manrope', sans-serif;
+}
+
+/* Base Reset & Smooth Typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+  background-color: var(--raat);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--raat);
+  color: var(--chandan);
+  min-height: 100vh;
+  min-height: 100dvh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+[lang="mr"], .font-mr {
+  font-family: var(--font-marathi);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+img, svg {
+  vertical-align: middle;
+}
+
+/* Accessibility Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 9999;
+  background: var(--shendur);
+  color: #1A0E04;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: var(--radius-field);
+  box-shadow: var(--glow-shendur);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* App Shell Layout */
+#app-container {
+  max-width: 640px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: calc(var(--nav-height) + var(--safe-bottom) + 32px);
+  background-color: var(--raat);
+}
+
+@media (min-width: 1024px) {
+  #app-container {
+    max-width: 900px;
+  }
+}
+
+/* Sacred Rangoli & Ambient Atmosphere */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.035;
+  background-image: radial-gradient(#fff 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.rangoli-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  mask-image: radial-gradient(75% 65% at 50% 0%, #000 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(75% 65% at 50% 0%, #000 0%, transparent 80%);
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+.ambient-glow {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 700px;
+  height: 320px;
+  pointer-events: none;
+  background: radial-gradient(55% 55% at 50% 40%, rgba(240, 90, 40, 0.28) 0%, rgba(247, 168, 27, 0.12) 48%, transparent 75%);
+  z-index: 1;
+}
+
+.torana-divider {
+  position: relative;
+  height: 12px;
+  width: 100%;
+  background: radial-gradient(circle at center, var(--zendu) 2px, transparent 3px);
+  background-size: 24px 12px;
+  opacity: 0.6;
+  margin: 20px 0 10px;
+}
+
+/* Surface Utility Classes */
+.surface {
+  background-color: var(--dhoop);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+
+.surface-raised {
+  background-color: var(--dhoop-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-card);
+}
+
+.surface-interactive {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.surface-interactive:hover {
+  transform: translateY(-2px);
+  border-color: rgba(240, 90, 40, 0.45);
+  box-shadow: var(--lift-card);
+}
+
+.surface-interactive:active {
+  transform: scale(0.985);
+}
+
+/* Badges & Tags */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.badge-famous {
+  background: rgba(20, 16, 12, 0.92);
+  color: var(--shendur);
+  border: 1px solid rgba(240, 90, 40, 0.55);
+}
+
+.badge-manache {
+  background: rgba(20, 16, 12, 0.92);
+  color: var(--pital);
+  border: 1px solid rgba(240, 178, 71, 0.6);
+}
+
+.badge-historic {
+  background: rgba(20, 16, 12, 0.92);
+  color: var(--zendu);
+  border: 1px solid rgba(247, 168, 27, 0.5);
+}
+
+.badge-temple {
+  background: rgba(20, 16, 12, 0.92);
+  color: var(--muted);
+  border: 1px solid var(--line-strong);
+}
+
+/* Live Crowd Halo Dots */
+.dot-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dot-indicator.low {
+  background-color: var(--hirva);
+  box-shadow: 0 0 8px rgba(56, 161, 105, 0.6);
+}
+
+.dot-indicator.moderate {
+  background-color: var(--zendu);
+  box-shadow: 0 0 8px rgba(247, 168, 27, 0.6);
+}
+
+.dot-indicator.heavy {
+  background-color: var(--shendur);
+  box-shadow: 0 0 8px rgba(240, 90, 40, 0.7);
+}
+
+/* Horizontal Scroll Container */
+.scroll-rail {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 16px 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.scroll-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-rail > * {
+  scroll-snap-align: start;
+}
+
+/* Utilities */
+.clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

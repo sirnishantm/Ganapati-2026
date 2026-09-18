@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+  <meta name="theme-color" content="#14100C" />
+
+  <title>Pune Ganpati Darshan 2026 — Find Mandals, Plan Walkable Routes</title>
+  <meta name="description"
+    content="Live queue reports from devotees, and walkable darshan routes through Pune's historic peths for Ganeshotsav 2026. Free, non-commercial, no ads." />
+  <meta name="application-name" content="Pune Ganpati Darshan" />
+
+  <!-- OpenGraph & Social Cards -->
+  <meta property="og:title" content="Pune Ganpati Darshan — Find Mandals & Plan Your Route" />
+  <meta property="og:description"
+    content="Live queue reports from devotees and walkable darshan routes through Pune's old peths. Free and non-commercial." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Google Fonts & Leaflet CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/map.css" />
+</head>
+
+<body>
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Ambient Grain Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Master Embedded SVG Symbol for Ganesh Emblem -->
+  <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="pg-ganpati" viewBox="0 0 100 100" fill="none">
+      <path d="M34 32C24 26 12 28 7 37c-5 9-2 22 6 28 6 5 14 5 21 1Z" fill="currentColor" opacity=".6"></path>
+      <path d="M66 32c10-6 22-4 27 5 5 9 2 22-6 28-6 5-14 5-21 1Z" fill="currentColor" opacity=".6"></path>
+      <circle cx="50" cy="6" r="3.4" fill="currentColor"></circle>
+      <path d="M50 11c6 0 11 4 13 10H37c2-6 7-10 13-10Z" fill="currentColor"></path>
+      <rect x="34" y="21" width="32" height="4.5" rx="2.2" fill="currentColor"></rect>
+      <path d="M50 26c11 0 19 8 19 18v9c0 10-8 18-19 18s-19-8-19-18v-9c0-10 8-18 19-18Z" fill="currentColor"></path>
+      <path d="M39 58c-.5 6 .3 10 2.4 12.6-2.8-.6-4.6-4-4.4-8.4Z" fill="currentColor" opacity=".8"></path>
+      <path d="M61 58c.5 6-.3 10-2.4 12.6 2.8-.6 4.6-4 4.4-8.4Z" fill="currentColor" opacity=".8"></path>
+      <path d="M50 57c0 8-.6 14-4 18.5-2.6 3.4-2 7.5 1.8 8.6 3 .9 5.6-.9 5.9-3.6" stroke="currentColor"
+        stroke-width="6.4" stroke-linecap="round" stroke-linejoin="round"></path>
+      <ellipse cx="41" cy="40" rx="3" ry="3.6" fill="#14100C"></ellipse>
+      <ellipse cx="59" cy="40" rx="3" ry="3.6" fill="#14100C"></ellipse>
+      <path d="M50 29.5c1.4 0 2.5 1.6 2.5 3.6S51.4 37 50 37s-2.5-1.6-2.5-3.9 1.1-3.6 2.5-3.6Z" fill="#14100C"
+        opacity=".55"></path>
+    </symbol>
+  </svg>
+
+  <div id="app-container">
+    <!-- Top Header Bar -->
+    <header class="site-header">
+      <a href="#/" class="header-brand">
+        <svg viewBox="0 0 100 100" class="brand-icon">
+          <use href="#pg-ganpati"></use>
+        </svg>
+        <span class="brand-title">Pune Ganpati</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Desktop Navigation">
+        <a href="#/" class="header-nav-link active">Home</a>
+        <a href="#/explore" class="header-nav-link">All Mandals</a>
+        <a href="#/map" class="header-nav-link">Live Map</a>
+        <a href="#/routes" class="header-nav-link">Routes</a>
+        <a href="#/start" class="header-nav-link">Build Route</a>
+        <a href="#/plan" class="header-nav-link">Your Darshan</a>
+        <a href="#/parking" class="header-nav-link">Parking</a>
+        <a href="#/saved" class="header-nav-link">Saved</a>
+      </nav>
+    </header>
+
+    <!-- Dynamic Router Content Target -->
+    <main id="main-content">
+      <!-- Injected by js/app.js -->
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+        <svg viewBox="0 0 100 100" style="width:24px;height:24px;color:var(--pital);">
+          <use href="#pg-ganpati"></use>
+        </svg>
+        <span style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--chandan);">Pune Ganpati
+          Darshan</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--muted);line-height:1.45;">
+        Live queue reports from devotees, and walkable routes that count the queue as well as the walk. Free for
+        everyone, always.
+      </p>
+
+      <nav class="footer-nav-grid" aria-label="Footer navigation">
+        <div>
+          <h3 class="footer-col-title">Explore</h3>
+          <ul class="footer-link-list">
+            <li><a href="#/explore" class="footer-link">All mandals</a></li>
+            <li><a href="#/map" class="footer-link">Live crowd map</a></li>
+            <li><a href="#/saved" class="footer-link">Saved</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Plan</h3>
+          <ul class="footer-link-list">
+            <li><a href="#/start" class="footer-link">Build a route</a></li>
+            <li><a href="#/routes" class="footer-link">Curated routes</a></li>
+            <li><a href="#/plan" class="footer-link">Your darshan</a></li>
+            <li><a href="#/parking" class="footer-link">Parking</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">About</h3>
+          <ul class="footer-link-list">
+            <li><a href="#/guides" class="footer-link">Guides</a></li>
+            <li><a href="#/how-to-use" class="footer-link">How to use</a></li>
+            <li><a href="#/how-to-use/marathi" class="footer-link" lang="mr">कसे वापरावे</a></li>
+            <li><a href="#/about" class="footer-link">About this app</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div
+        style="margin-top:20px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--faint);line-height:1.4;">
+        <p>Free and non-commercial — no ads, no fees. An independent public project for Pune Ganeshotsav devotees.</p>
+      </div>
+    </footer>
+
+    <!-- Fixed Bottom Mobile Navigation -->
+    <nav class="bottom-nav" aria-label="Mobile Navigation">
+      <ul class="bottom-nav-list">
+        <li class="bottom-nav-item">
+          <a href="#/" class="bottom-nav-link active">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+              <path
+                d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z">
+              </path>
+            </svg>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="bottom-nav-item">
+          <a href="#/explore" class="bottom-nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
+            <span>Explore</span>
+          </a>
+        </li>
+        <li class="bottom-nav-item">
+          <a href="#/map" class="bottom-nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+              <line x1="8" y1="2" x2="8" y2="18"></line>
+              <line x1="16" y1="6" x2="16" y2="22"></line>
+            </svg>
+            <span>Map</span>
+          </a>
+        </li>
+        <li class="bottom-nav-item">
+          <a href="#/routes" class="bottom-nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="6" cy="19" r="3"></circle>
+              <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path>
+              <circle cx="18" cy="5" r="3"></circle>
+            </svg>
+            <span>Routes</span>
+          </a>
+        </li>
+        <li class="bottom-nav-item">
+          <a href="#/saved" class="bottom-nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span>Saved</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Leaflet Map Script -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Application Logic Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/map-controller.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

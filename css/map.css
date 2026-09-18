@@ -1,0 +1,166 @@
+/* ==========================================================================
+   Pune Ganpati Darshan 2026 - Interactive Map Styles
+   Leaflet Dark Custom Theme, Pins, Bottom Sheets, & Route Polylines
+   ========================================================================== */
+
+#map-view-container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - var(--header-height) - var(--nav-height));
+  height: calc(100dvh - var(--header-height) - var(--nav-height));
+  background: #14100C;
+}
+
+@media (min-width: 768px) {
+  #map-view-container {
+    height: calc(100vh - var(--header-height));
+    height: calc(100dvh - var(--header-height));
+  }
+}
+
+#leaflet-map {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: #14100C;
+}
+
+/* Dark tiles styling filter */
+.leaflet-tile {
+  filter: brightness(0.65) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}
+
+/* Map Header Floating Filter Controls */
+.map-floating-controls {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 30;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.map-floating-controls>* {
+  pointer-events: auto;
+}
+
+.map-layer-toggles {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.map-layer-btn {
+  background: rgba(20, 16, 12, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line-strong);
+  color: var(--chandan);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.15s ease;
+}
+
+.map-layer-btn.active {
+  background: var(--shendur);
+  color: #1A0E04;
+  border-color: var(--shendur);
+}
+
+/* Custom Marker Pins */
+.mandal-marker-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--dhoop);
+  border: 2px solid var(--shendur);
+  color: var(--shendur);
+  box-shadow: 0 0 12px rgba(240, 90, 40, 0.5), 0 4px 8px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.mandal-marker-pin:hover,
+.mandal-marker-pin.active {
+  transform: scale(1.25);
+  z-index: 999 !important;
+}
+
+.mandal-marker-pin.manache {
+  border-color: var(--pital);
+  color: var(--pital);
+  background: #251B10;
+  box-shadow: 0 0 14px rgba(240, 178, 71, 0.6), 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.mandal-marker-pin.famous {
+  border-color: var(--shendur);
+  color: var(--shendur);
+}
+
+.mandal-marker-pin.temple {
+  border-color: var(--muted);
+  color: var(--chandan);
+}
+
+.mandal-marker-pin.parking {
+  background: #1B263B;
+  border-color: #4C8ED9;
+  color: #4C8ED9;
+}
+
+.mandal-marker-rank {
+  font-size: 13px;
+  font-weight: 800;
+  font-family: var(--font-sans);
+}
+
+/* Bottom Preview Sheet on Map */
+.map-preview-sheet {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+  z-index: 40;
+  background: var(--dhoop-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.75);
+  transform: translateY(120%);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.map-preview-sheet.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sheet-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: var(--faint);
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.sheet-close-btn:hover {
+  color: var(--chandan);
+}
